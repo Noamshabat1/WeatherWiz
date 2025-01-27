@@ -77,7 +77,6 @@ This project includes detailed visualizations of model performance and historica
 ---
 
 ## **Acknowledgments**  
-This project is made possible with data from the **Israel Meteorological Service (IMS)**.
 This project is made possible with data from the [**Israel Meteorological Service (IMS)**](https://ims.gov.il).
 
 
