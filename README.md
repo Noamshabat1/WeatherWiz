@@ -4,7 +4,7 @@
 ---
 
 ## **Overview**  
-ForecastGenius is a cutting-edge machine learning project designed to predict weather patterns, specifically temperature, using historical data collected from meteorological stations across Israel. By leveraging advanced regression algorithms and AI techniques, this project delivers accurate and reliable weather forecasts, empowering users to make informed decisions.
+ForecastGenius is a cutting-edge machine learning project designed to predict weather patterns, specifically temperature and radiation, using historical data collected from meteorological stations across Israel. By leveraging advanced regression algorithms and AI techniques, this project delivers accurate and reliable weather forecasts, empowering users to make informed decisions.
 
 ---
 
@@ -63,12 +63,8 @@ The main goal of this project is to harness the power of AI to analyze environme
 
 ## **Visualizations**  
 This project includes detailed visualizations of model performance and historical weather trends:  
-- **Model Predictions vs. Actual Values** for all models.  
-
----
-
-## **Conclusion**  
-ForecastGenius showcases the potential of AI in weather forecasting by providing accurate and reliable predictions. Among the tested models, **Random Forest Regression** and advanced neural networks consistently demonstrated superior accuracy. This tool not only aids in daily forecasting but also holds promise for disaster prevention and climate research.
+- **Model Predictions vs. Actual Values** for all models.
+![Model Comparison](images/model_comparison.png)
 
 ---
 
