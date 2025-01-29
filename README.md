@@ -4,7 +4,7 @@
 ---
 
 ## **Overview**  
-ForecastGenius is a cutting-edge machine learning project designed to predict weather patterns, specifically temperature and radiation, using 25 years of historical data collected from meteorological stations across Israel by the Israel Meteorological Service (IMS). The data was sampled every 10 minutes daily and later aggregated into a daily template. By leveraging advanced regression algorithms and AI techniques, this project delivers accurate and reliable weather forecasts, empowering users to make informed decisions.
+Weather Wiz is a cutting-edge machine learning project designed to predict weather patterns, specifically temperature and radiation, using 25 years of historical data collected from meteorological stations across Israel by the Israel Meteorological Service (IMS). The data was sampled every 10 minutes daily and later aggregated into a daily template. By leveraging advanced regression algorithms and AI techniques, this project delivers accurate and reliable weather forecasts, empowering users to make informed decisions.
 
 ---
 
