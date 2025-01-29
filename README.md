@@ -63,7 +63,7 @@ The main goal of this project is to harness the power of AI to analyze environme
 
 ## **Visualizations**  
 This project includes detailed visualizations of model performance and historical weather trends:  
-- **Model Predictions vs. Actual Values** for all models.
+- **Model Predictions vs. Actual Values** across all models.
   
   ![Model Comparison](images/model_comparison.png)
 
