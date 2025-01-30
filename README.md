@@ -53,11 +53,11 @@ The main goal of this project is to harness the power of AI to analyze environme
 ### Neural Network  
 ![Neural Network Results](images/neural_network_results.png)  
 
-### Recurrent Neural Network (RNN)  
-![RNN Results](images/rnn_results.png)  
-
 ### Long Short-Term Memory (LSTM)  
 ![LSTM Results](images/lstm_results.png)  
+
+### Transformer 
+![Transformer Results](images/transformer_results.png)  
 
 ---
 
