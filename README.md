@@ -25,8 +25,8 @@ The main goal of this project is to harness the power of AI to analyze environme
   - **Decision Tree Regression**  
   - **Random Forest Regression**  
   - **Neural Network**  
-  - **Recurrent Neural Network (RNN)**  
-  - **Long Short-Term Memory (LSTM)**  
+  - **Long Short-Term Memory (LSTM)**
+  - **Transformer**    
 
 ---
 
