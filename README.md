@@ -20,13 +20,12 @@ The main goal of this project is to harness the power of AI to analyze environme
 - Comparison of multiple machine learning algorithms, including:  
   - **Linear Regression**  
   - **Ridge Regression**  
-  - **Lasso Regression**  
-  - **K-Nearest Neighbors (KNN)**  
-  - **Decision Tree Regression**  
+  - **Lasso Regression**   
   - **Random Forest Regression**  
   - **Neural Network**  
   - **Long Short-Term Memory (LSTM)**
-  - **Transformer**    
+  - **Transformer**
+  - **Graph Neural Network (GNN)**    
 
 ---
 
@@ -41,12 +40,6 @@ The main goal of this project is to harness the power of AI to analyze environme
 ### Lasso Regression  
 ![Lasso Regression Results](images/lasso_regression_results.png)  
 
-### K-Nearest Neighbors  
-![K-Nearest Neighbors Results](images/knn_results.png)  
-
-### Decision Tree  
-![Decision Tree Results](images/decision_tree_results.png)  
-
 ### Random Forest  
 ![Random Forest Results](images/random_forest_results.png)  
 
@@ -57,7 +50,10 @@ The main goal of this project is to harness the power of AI to analyze environme
 ![LSTM Results](images/lstm_results.png)  
 
 ### Transformer 
-![Transformer Results](images/transformer_results.png)  
+![Transformer Results](images/transformer_results.png) 
+
+### Graph Neural Network  
+![Graph Neural Network Results](images/gnn_results.png)  
 
 ---
 
