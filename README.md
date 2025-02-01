@@ -21,7 +21,7 @@ The main goal of this project is to harness the power of AI to analyze environme
   - **Linear Regression**  
   - **Ridge Regression**  
   - **Lasso Regression**   
-  - **Random Forest Regression**  
+  - **Random Forest (RF)**  
   - **Neural Network**  
   - **Long Short-Term Memory (LSTM)**
   - **Transformer**
