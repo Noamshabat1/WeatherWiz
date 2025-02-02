@@ -43,9 +43,6 @@ The main goal of this project is to harness the power of AI to analyze environme
 ### Random Forest  
 ![Random Forest Results](images/random_forest_results.png)  
 
-### Neural Network  
-![Neural Network Results](images/neural_network_results.png)  
-
 ### Long Short-Term Memory (LSTM)  
 ![LSTM Results](images/lstm_results.png)  
 
