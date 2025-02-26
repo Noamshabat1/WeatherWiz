@@ -70,7 +70,6 @@ Data is sourced from the [Israel Meteorological Service (IMS)](https://ims.gov.i
 Weather Wiz implements a variety of models to capture different aspects of the data:
 
 - **Linear Models:**  
-  - **Ridge Regression:** Incorporates L2 regularization to prevent overfitting.  
   - **Lasso Regression:** Uses L1 regularization to enforce sparsity in the model coefficients.
 - **Tree-Based Model:**  
   - **Random Forest:** An ensemble method that captures nonlinear interactions among features.
@@ -85,7 +84,7 @@ Weather Wiz implements a variety of models to capture different aspects of the d
   - **LSTM:** Trained using the Adam optimizer.  
   - **GNN:** Trained using AdamW with weight decay.
 - **Regularization:**  
-  - Incorporated in linear models via L1 (Lasso) and L2 (Ridge) penalties.
+  - Incorporated in linear models via L1 (Lasso) penalties.
 - **Hyperparameter Tuning:**  
   - **LSTM:**  
     - Hidden units: 32 to 128  
