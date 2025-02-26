@@ -282,7 +282,7 @@ python main.py
 
 Enjoy exploring **Weather Wiz** and happy forecasting!
 
-
+---
   
 ## **Acknowledgments**  
 This project is made possible with data from the [**Israel Meteorological Service (IMS)**](https://ims.gov.il).
