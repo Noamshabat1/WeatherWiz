@@ -168,7 +168,7 @@ The pipeline includes plots comparing actual vs. predicted values as well as tra
 ![TG predictions 2](images/TG_pred_2.png)  
 
 #### Lasso Regression				
-
+![Lasso Regression](images/lasso.png) 
 #### Random Forest				
 
 ![Random Forest](images/random_forest.png) 
