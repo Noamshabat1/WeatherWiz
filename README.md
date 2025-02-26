@@ -206,6 +206,69 @@ The project repository includes further details on:
 * Custom time series splitting functions.
 * Evaluation metrics and plotting utilities.
 * Full implementation details for each model, including training loops and optimizer settings.
+
+
+---
+
+## Getting Started
+
+Ready to explore **Weather Wiz**? Follow these simple steps to set up and run the project locally:
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/weather-wiz.git
+cd weather-wiz
+```
+
+### Set Up the Environment
+
+Create and activate a virtual environment, then install the required dependencies:
+
+```bash
+python -m venv env
+source env/bin/activate  # On Windows: env\Scriptsctivate
+pip install -r requirements.txt
+```
+
+### Run the Main Script
+
+Launch the training pipeline:
+
+```bash
+python main.py
+```
+
+### Explore the Codebase
+
+- **`data/`**: Data collection and preprocessing scripts.
+- **`models/`**: Implementations of machine learning and deep learning models.
+- **`training/`**: Training pipelines, evaluation metrics, and visualization scripts.
+- **`notebooks/`**: Jupyter notebooks for exploratory analysis and experiments.
+
+### Copy-Paste Commands
+
+Simply copy the commands below into your terminal:
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/weather-wiz.git
+cd weather-wiz
+
+# Create and activate a virtual environment
+python -m venv env
+source env/bin/activate  # For Windows: env\Scriptsctivate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the main training script
+python main.py
+```
+
+Enjoy exploring **Weather Wiz** and happy forecasting!
+
+
   
 ## **Acknowledgments**  
 This project is made possible with data from the [**Israel Meteorological Service (IMS)**](https://ims.gov.il).
