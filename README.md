@@ -18,7 +18,7 @@ The following are sample of Meteorological stations which the data we extracted 
 The primary goal of this project is to predict temperature (denoted as **TG**) from historical meteorological data. Weather conditions are influenced by multiple factors, including humidity, wind speed, and precipitation. By leveraging 25 years of multi-station data sampled at 10-minute intervals (and aggregated appropriately), Weather Wiz aims to provide accurate short-term forecasts.
 
 # 2. Data Description
-This are the columns provided by IMS
+This are the columns provided by IMS:
 
 ![Features explaination](images/features_explain.png)  
 
@@ -94,10 +94,10 @@ Weather Wiz implements a variety of models to capture different aspects of the d
     - Learning rate: 0.001 to 0.01  
     - Epochs: 5 to 10
   - **GNN:**  
-    - Hidden dimension: 128 to 256  
-    - Dropout: 0.3 to 0.4  
-    - Learning rate: 0.001 to 0.0035  
-    - Epochs: 30 to 80
+    - Hidden dimension: 32 to 256  
+    - Dropout: 0.0 to 0.5  
+    - Learning rate: 0.001 to 0.01  
+    - Epochs: 30 to 100
 
 ### Graph Neural Network (GNN) Overview
 Graph Neural Networks (GNNs) operate on data structured as graphs, where nodes represent entities—in this case, weather stations—and edges represent spatial or temporal relationships. GNNs aggregate information from a node’s neighbors through graph convolutional layers, effectively capturing localized patterns. This is particularly beneficial for weather prediction, as meteorological conditions are often spatially correlated across geographically proximate stations.
@@ -167,15 +167,15 @@ The pipeline includes plots comparing actual vs. predicted values as well as tra
 ![TG predictions](images/TG_pred.png)  
 ![TG predictions 2](images/TG_pred_2.png)  
 
-#### Lasso Regression				
+#### Lasso Regression:		
 ![Lasso Regression](images/lasso.png) 
-#### Random Forest				
+#### Random Forest:			
 
 ![Random Forest](images/random_forest.png) 
 
-#### LSTM				
+#### LSTM:		
 ![LSTM](images/lstm.png) 
-#### Graph Neural Network (GNN)				
+#### Graph Neural Network (GNN):		
 ![GNN loss](images/loss.png) 
 
 - **Performance Metrics:**  
