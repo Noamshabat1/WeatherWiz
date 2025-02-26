@@ -6,7 +6,7 @@ by Noam Shabat & Tomer Vagenfeld
 ## Abstract
 This project presents Weather Wiz, an AI-powered system for forecasting temperature using 25 years of historical weather data provided by the Israel Meteorological Service (IMS). Employing a suite of machine learning models—from linear regressions with regularization to deep learning architectures such as LSTM and Graph Neural Networks (GNN)—the framework captures both temporal and spatial dependencies inherent in weather data. This document details the problem definition, data characteristics, preprocessing steps, model implementations, and experimental setup in a scientific paper format.
 
-The following are sample of Meteorological stations which the data we extracted from IMS
+The following are sample of Meteorological stations which the data we extracted from IMS:
 
 ![Stations Map](images/station_map.png)  
 
