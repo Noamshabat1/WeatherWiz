@@ -178,14 +178,13 @@ The pipeline includes plots comparing actual vs. predicted values as well as tra
 #### Graph Neural Network (GNN)				
 ![GNN loss](images/loss.png) 
 
-## results:
-### MAE
-![MAE](images/mae.png) 
-### MSE
-mse.png
-![MSE](images/mse.png) 
-### r^2
-![R^2](images/r2.png) 
+- **Performance Metrics:**  
+  - **MAE:**  
+    ![MAE](images/mae.png) 
+  - **MSE:**  
+    ![MSE](images/mse.png) 
+  - **R² Score:**  
+    ![R² Score](images/r2.png) 
 
 
 # 7. Conclusion
