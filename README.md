@@ -11,11 +11,15 @@ The following are sample of Meteorological stations which the data we extracted 
 ![Stations Map](images/station_map.png)  
 
 
+---
+
 
 # 1. Introduction
 
 ### Problem Definition
 The primary goal of this project is to predict temperature (denoted as **TG**) from historical meteorological data. Weather conditions are influenced by multiple factors, including humidity, wind speed, and precipitation. By leveraging 25 years of multi-station data sampled at 10-minute intervals (and aggregated appropriately), Weather Wiz aims to provide accurate short-term forecasts.
+
+---
 
 # 2. Data Description
 This are the columns provided by IMS:
@@ -44,6 +48,8 @@ Data is sourced from the [Israel Meteorological Service (IMS)](https://ims.gov.i
 - **Label:**  
   - **Temperature (TG):** The primary variable targeted for prediction.
 
+---
+
 # 3. Data Preprocessing and Preparation
 
 ### Preprocessing Steps
@@ -63,6 +69,8 @@ Data is sourced from the [Israel Meteorological Service (IMS)](https://ims.gov.i
   - Original data is recorded every 10 minutes; for forecasting, a sequence length is determined based on the desired forecast horizon (e.g., 6 intervals for hourly predictions, 144 for daily).
 - **Time Series Split:**  
   - A custom time series split is implemented using `TimeSeriesSplit` to ensure that training and testing sets maintain chronological order. This split preserves the temporal integrity of the data.
+
+---
 
 # 4. Methodology
 
@@ -100,6 +108,8 @@ Weather Wiz implements a variety of models to capture different aspects of the d
 
 ### Graph Neural Network (GNN) Overview
 Graph Neural Networks (GNNs) operate on data structured as graphs, where nodes represent entities—in this case, weather stations—and edges represent spatial or temporal relationships. GNNs aggregate information from a node’s neighbors through graph convolutional layers, effectively capturing localized patterns. This is particularly beneficial for weather prediction, as meteorological conditions are often spatially correlated across geographically proximate stations.
+
+---
 
 # 5. Implementation Details
 
@@ -151,6 +161,9 @@ class GraphNeuralNetwork(nn.Module):
         x3 = self.dropout(x3) + x2  # Residual connection
         return self.fc(x3).squeeze()
 ```
+
+---
+
 # 6. Training Pipeline
 #### Time Series Cross-Validation:
 A custom time series split ensures that data is partitioned chronologically for robust evaluation.
@@ -194,6 +207,7 @@ Below is an overview of the model performance metrics (MAE, MSE, R² Score, and 
 
 ![Model Performance Summary](images/cross.png)
 
+---
 
 # 7. Conclusion
 Weather Wiz demonstrates a robust methodology for temperature prediction by combining classical statistical techniques with state-of-the-art deep learning models. The integration of both temporal and spatial features—particularly through the use of GNNs—allows the system to effectively model the complexities of weather dynamics. 
@@ -207,10 +221,9 @@ The project repository includes further details on:
 * Evaluation metrics and plotting utilities.
 * Full implementation details for each model, including training loops and optimizer settings.
 
-
 ---
 
-## Getting Started
+# 8. Getting Started
 
 Ready to explore **Weather Wiz**? Follow these simple steps to set up and run the project locally:
 
