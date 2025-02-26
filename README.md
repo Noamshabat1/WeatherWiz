@@ -4,12 +4,12 @@
 ---
 
 ## **Overview**  
-Weather Wiz is a cutting-edge machine learning project designed to predict weather patterns, specifically temperature and radiation, using 25 years of historical data collected from meteorological stations across Israel by the Israel Meteorological Service (IMS). The data was sampled every 10 minutes daily and later aggregated into a daily template. By leveraging advanced regression algorithms and AI techniques, this project delivers accurate and reliable weather forecasts, empowering users to make informed decisions.
+Weather Wiz is a cutting-edge machine learning project designed to predict weather patterns, specifically temperature, and radiation, using 25 years of historical data collected from meteorological stations across Israel by the Israel Meteorological Service (IMS). The data was sampled every 10 minutes daily and later aggregated into a daily template. This project delivers accurate and reliable weather forecasts by leveraging advanced regression algorithms and AI techniques, empowering users to make informed decisions.
 
 ---
 
 ## **Purpose**  
-The main goal of this project is to harness the power of AI to analyze environmental data and provide precise weather predictions. Factors like maximum and minimum temperatures, cloud cover, humidity, precipitation, and wind speed are taken into account to train models for accurate forecasting.
+This project's main goal is to harness AI's power to analyze environmental data and provide precise weather predictions. Factors like maximum and minimum temperatures, cloud cover, humidity, precipitation, and wind speed are taken into account to train models for accurate forecasting.
 
 ---
 
@@ -23,7 +23,6 @@ The main goal of this project is to harness the power of AI to analyze environme
   - **Lasso Regression**   
   - **Random Forest (RF)**  
   - **Long Short-Term Memory (LSTM)**
-  - **Transformer**
   - **Graph Neural Network (GNN)**    
 
 ---
@@ -44,9 +43,6 @@ The main goal of this project is to harness the power of AI to analyze environme
 
 ### Long Short-Term Memory (LSTM)  
 ![LSTM Results](images/lstm_results.png)  
-
-### Transformer 
-![Transformer Results](images/transformer_results.png) 
 
 ### Graph Neural Network  
 ![Graph Neural Network Results](images/gnn_results.png)  
