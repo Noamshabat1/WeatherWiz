@@ -163,14 +163,14 @@ The pipeline includes plots comparing actual vs. predicted values as well as tra
 
 ### examples of results:
 
-![TG predictions](images/TG pred.png)  
-![TG predictions 2](images/TG pred_2.png)  
+![TG predictions](images/TG_pred.png)  
+![TG predictions 2](images/TG_pred_2.png)  
 
 #### Lasso Regression				
 
 #### Random Forest				
 
-![Random Forest](images/random forest.png) 
+![Random Forest](images/random_forest.png) 
 
 #### LSTM				
 ![LSTM](images/lstm.png) 
