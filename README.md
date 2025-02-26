@@ -239,9 +239,9 @@ cd WeatherWiz
 Create and activate a virtual environment, then install the required dependencies:
 
 ```bash
-**python -m venv env
+python -m venv env
 source env/bin/activate  # On Windows: env\Scripts\ctivate
-pip install -r requirements.txt**
+pip install -r requirements.txt
 ```
 
 ### Run the Main Script
