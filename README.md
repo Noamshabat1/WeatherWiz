@@ -257,7 +257,7 @@ cd weather-wiz
 
 # Create and activate a virtual environment
 python -m venv env
-source env/bin/activate  # For Windows: env\Scriptsctivate
+source env/bin/activate  # For Windows: env\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
@@ -265,6 +265,7 @@ pip install -r requirements.txt
 # Run the main training script
 python main.py
 ```
+
 
 Enjoy exploring **Weather Wiz** and happy forecasting!
 
