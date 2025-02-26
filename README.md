@@ -1,5 +1,5 @@
 # **Weather Wiz**  
-**Your AI-powered weather expert, trained on multi-station data to deliver precise and reliable forecasts.**\
+**Your AI-powered weather expert, trained on multi-station data to deliver precise and reliable forecasts.**
 
 by Noam Shabat & Tomer Vagenfeld
 
