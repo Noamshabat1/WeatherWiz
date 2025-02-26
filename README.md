@@ -230,8 +230,8 @@ Ready to explore **Weather Wiz**? Follow these simple steps to set up and run th
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/weather-wiz.git
-cd weather-wiz
+git clone https://github.com/Noamshabat1/WeatherWiz.git
+cd WeatherWiz
 ```
 
 ### Set Up the Environment
@@ -239,9 +239,9 @@ cd weather-wiz
 Create and activate a virtual environment, then install the required dependencies:
 
 ```bash
-python -m venv env
-source env/bin/activate  # On Windows: env\Scriptsctivate
-pip install -r requirements.txt
+**python -m venv env
+source env/bin/activate  # On Windows: env\Scripts\ctivate
+pip install -r requirements.txt**
 ```
 
 ### Run the Main Script
@@ -265,12 +265,17 @@ Simply copy the commands below into your terminal:
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/weather-wiz.git
-cd weather-wiz
+git clone https://github.com/Noamshabat1/WeatherWiz.git
+cd WeatherWiz
 
 # Create and activate a virtual environment
 python -m venv env
-source env/bin/activate  # For Windows: env\Scripts\activate
+
+# On macOS/Linux:
+source env/bin/activate
+
+# On Windows:
+env\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
