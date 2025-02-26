@@ -172,7 +172,7 @@ The pipeline includes plots comparing actual vs. predicted values as well as tra
 
 ![Random Forest](images/random_forest.png) 
 
-#### LSTM:		
+#### LSTM(Long Short Term Memory Network):		
 ![LSTM](images/lstm.png) 
 #### Graph Neural Network (GNN):		
 ![GNN loss](images/loss.png) 
