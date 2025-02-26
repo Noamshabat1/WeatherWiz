@@ -18,6 +18,7 @@ The primary goal of this project is to predict temperature (denoted as **TG**) f
 
 # 2. Data Description
 This are the columns provided by IMS
+
 ![Features explaination](images/features_explain.png)  
 
 
@@ -26,7 +27,7 @@ This are the columns provided by IMS
 ![TG distribution](images/TG_distribution.png)  
 
 ![TG distribution full](images/TG_series_full.png)
-![TG distribution](images/TG series.png)  
+![TG distribution](images/TG_series.png)  
 
 
 
