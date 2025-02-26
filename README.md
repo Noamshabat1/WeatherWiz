@@ -61,7 +61,7 @@ Data is sourced from the [Israel Meteorological Service (IMS)](https://ims.gov.i
 - **Scaling:**  
   - Apply `MinMaxScaler` to standardize the feature set.
 - **Feature Engineering:**  
-  - Generate cyclical features (e.g., `hour_sin` and `hour_cos`) for capturing diurnal cycles.
+  - Generate cyclical features (e.g., `hour_sin` and `hour_cos`) by capturing diurnal cycles.
   - Compute wind vector components from wind speed and direction.
 
 ### Data Resolution and Splitting
@@ -115,7 +115,7 @@ Graph Neural Networks (GNNs) operate on data structured as graphs, where nodes r
 
 ### Key Code Excerpts
 
-#### LSTM Model (Long Short Term Memory Network):
+#### Long Short-Term Memory Network (LSTM) Model:
 The LSTM model is structured to capture the sequential nature of weather data:
 ```python
 class WeatherForecastLSTM(nn.Module):
