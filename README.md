@@ -68,3 +68,202 @@ This project includes detailed visualizations of model performance and historica
 This project is made possible with data from the [**Israel Meteorological Service (IMS)**](https://ims.gov.il).
 
 
+
+
+
+
+# Weather Wiz: Temperature Prediction Project
+
+by Noam Shabat & Tomer Vagenfeld
+
+## Abstract
+This project presents Weather Wiz, an AI-powered system for forecasting temperature using 25 years of historical weather data provided by the Israel Meteorological Service (IMS). Employing a suite of machine learning models—from linear regressions with regularization to deep learning architectures such as LSTM and Graph Neural Networks (GNN)—the framework captures both temporal and spatial dependencies inherent in weather data. This document details the problem definition, data characteristics, preprocessing steps, model implementations, and experimental setup in a scientific paper format.
+
+The following are sample of Meteorological stations which the data we extracted from IMS
+
+station map.png
+
+# 1. Introduction
+
+### Problem Definition
+The primary goal of this project is to predict temperature (denoted as **TG**) from historical meteorological data. Weather conditions are influenced by multiple factors, including humidity, wind speed, and precipitation. By leveraging 25 years of multi-station data sampled at 10-minute intervals (and aggregated appropriately), Weather Wiz aims to provide accurate short-term forecasts.
+
+# 2. Data Description
+This are the columns provided by IMS
+features explain.png
+
+### Target: predict Ground Temprature (TG):
+TG distribution.png
+
+TG series full.png
+
+TG series.png
+
+
+
+### Source and Nature of the Data
+Data is sourced from the [Israel Meteorological Service (IMS)](https://ims.gov.il), which collects comprehensive weather measurements from stations across Israel. The dataset spans 25 years with observations recorded every 10 minutes. For forecasting purposes, the data is aggregated into hourly or daily templates as needed.
+
+### Features and Labels
+- **Features:**  
+  - **Meteorological Variables:** Relative Humidity (RH), Wind Speed (WS), Wind Direction (WD), Rainfall (Rain), among others.  
+  - **Engineered Features:**  
+    - **Time Features:** Hour, sine and cosine transformations of the hour to capture cyclic patterns.  
+    - **Wind Vectors:** Derived from wind speed and wind direction to represent the wind’s x and y components.
+- **Label:**  
+  - **Temperature (TG):** The primary variable targeted for prediction.
+
+# 3. Data Preprocessing and Preparation
+
+### Preprocessing Steps
+- **Data Cleaning:**  
+  - Remove unrealistic values (e.g., ensure 0 ≤ RH ≤ 100, -15 ≤ TG ≤ 50).
+  - Drop nulls in key variables.
+- **Datetime Conversion:**  
+  - Convert the `datetime` column into proper datetime objects and sort the data chronologically.
+- **Scaling:**  
+  - Apply `MinMaxScaler` to standardize the feature set.
+- **Feature Engineering:**  
+  - Generate cyclical features (e.g., `hour_sin` and `hour_cos`) for capturing diurnal cycles.
+  - Compute wind vector components from wind speed and direction.
+
+### Data Resolution and Splitting
+- **Temporal Resolution:**  
+  - Original data is recorded every 10 minutes; for forecasting, a sequence length is determined based on the desired forecast horizon (e.g., 6 intervals for hourly predictions, 144 for daily).
+- **Time Series Split:**  
+  - A custom time series split is implemented using `TimeSeriesSplit` to ensure that training and testing sets maintain chronological order. This split preserves the temporal integrity of the data.
+
+# 4. Methodology
+
+### Model Architectures
+Weather Wiz implements a variety of models to capture different aspects of the data:
+
+- **Linear Models:**  
+  - **Ridge Regression:** Incorporates L2 regularization to prevent overfitting.  
+  - **Lasso Regression:** Uses L1 regularization to enforce sparsity in the model coefficients.
+- **Tree-Based Model:**  
+  - **Random Forest:** An ensemble method that captures nonlinear interactions among features.
+- **Deep Learning Models:**  
+  - **Long Short-Term Memory (LSTM):** A recurrent neural network designed to capture long-term temporal dependencies in sequential data.
+  - **Graph Neural Network (GNN):** Utilizes graph structures to model spatial relationships among weather stations.
+
+### Loss Function and Optimization
+- **Loss Function:**  
+  - The Mean Squared Error (MSE) loss is used for deep learning models.
+- **Optimization Algorithms:**  
+  - **LSTM:** Trained using the Adam optimizer.  
+  - **GNN:** Trained using AdamW with weight decay.
+- **Regularization:**  
+  - Incorporated in linear models via L1 (Lasso) and L2 (Ridge) penalties.
+- **Hyperparameter Tuning:**  
+  - **LSTM:**  
+    - Hidden units: 32 to 128  
+    - LSTM layers: 2 (fixed)  
+    - Dropout rate: 0.0 to 0.3  
+    - Learning rate: 0.001 to 0.01  
+    - Epochs: 5 to 10
+  - **GNN:**  
+    - Hidden dimension: 128 to 256  
+    - Dropout: 0.3 to 0.4  
+    - Learning rate: 0.001 to 0.0035  
+    - Epochs: 30 to 80
+
+### Graph Neural Network (GNN) Overview
+Graph Neural Networks (GNNs) operate on data structured as graphs, where nodes represent entities—in this case, weather stations—and edges represent spatial or temporal relationships. GNNs aggregate information from a node’s neighbors through graph convolutional layers, effectively capturing localized patterns. This is particularly beneficial for weather prediction, as meteorological conditions are often spatially correlated across geographically proximate stations.
+
+# 5. Implementation Details
+
+### Key Code Excerpts
+
+#### LSTM Model
+The LSTM model is structured to capture the sequential nature of weather data:
+```python
+class WeatherForecastLSTM(nn.Module):
+    def __init__(self, input_dim, hidden_units=128, lstm_layers=2, dropout_rate=0.3):
+        super(WeatherForecastLSTM, self).__init__()
+        self.lstm = nn.LSTM(
+            input_size=input_dim,
+            hidden_size=hidden_units,
+            num_layers=lstm_layers,
+            dropout=dropout_rate if lstm_layers > 1 else 0,
+            batch_first=True
+        )
+        self.fc = nn.Linear(hidden_units, 1)
+
+    def forward(self, x):
+        lstm_out, _ = self.lstm(x)
+        return self.fc(lstm_out[:, -1, :])
+```
+
+### Graph Neural Network (GNN) Model
+The GNN model is implemented to leverage spatial relationships:
+
+
+```python
+class GraphNeuralNetwork(nn.Module):
+    def __init__(self, num_features, hidden_dim=256, dropout=0.4, negative_slope=0.01):
+        super(GraphNeuralNetwork, self).__init__()
+        self.conv1 = GCNConv(num_features, hidden_dim)
+        self.bn1 = nn.BatchNorm1d(hidden_dim)
+        self.conv2 = GCNConv(hidden_dim, hidden_dim)
+        self.bn2 = nn.BatchNorm1d(hidden_dim)
+        self.conv3 = GCNConv(hidden_dim, hidden_dim)
+        self.bn3 = nn.BatchNorm1d(hidden_dim)
+        self.fc = nn.Linear(hidden_dim, 1)
+        self.dropout = nn.Dropout(dropout)
+
+    def forward(self, x, edge_index):
+        x1 = F.leaky_relu(self.bn1(self.conv1(x, edge_index)), negative_slope=0.01)
+        x1 = self.dropout(x1)
+        x2 = F.leaky_relu(self.bn2(self.conv2(x1, edge_index)), negative_slope=0.01)
+        x2 = self.dropout(x2) + x1  # Residual connection
+        x3 = F.leaky_relu(self.bn3(self.conv3(x2, edge_index)), negative_slope=0.01)
+        x3 = self.dropout(x3) + x2  # Residual connection
+        return self.fc(x3).squeeze()
+```
+# 6. Training Pipeline
+#### Time Series Cross-Validation:
+A custom time series split ensures that data is partitioned chronologically for robust evaluation.
+Evaluation Metrics:
+Models are assessed using Mean Absolute Error (MAE), Mean Squared Error (MSE), R² Score, and a modified Median Absolute Percentage Error (MdAPE).
+Visualization:
+The pipeline includes plots comparing actual vs. predicted values as well as training loss curves for each model.
+6. Results
+(Fill in detailed results and performance metrics after experimentation.)
+
+### examples of results:
+TG pred.png
+TG pred 2.png
+#### Lasso Regression				
+
+#### Random Forest				
+random forest.png
+
+#### LSTM				
+
+#### Graph Neural Network (GNN)				
+loss.png
+
+## results:
+### MAE
+mae.png
+### MSE
+mse.png
+### r^2
+r2.png
+
+
+
+# 7. Conclusion
+Weather Wiz demonstrates a robust methodology for temperature prediction by combining classical statistical techniques with state-of-the-art deep learning models. The integration of both temporal and spatial features—particularly through the use of GNNs—allows the system to effectively model the complexities of weather dynamics. 
+### Appendix
+#### Additional Code and Utilities
+The project repository includes further details on:
+
+* querying the API of IMS
+* Data cleaning and feature engineering routines.
+* Custom time series splitting functions.
+* Evaluation metrics and plotting utilities.
+* Full implementation details for each model, including training loops and optimizer settings.
+### Acknowledgments
+This project utilizes data from the API of Israel Meteorological Service (IMS)
