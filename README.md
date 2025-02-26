@@ -193,7 +193,7 @@ The pipeline includes plots comparing actual vs. predicted values as well as tra
 
 Below is an overview of the model performance metrics (MAE, MSE, R² Score, and MdAPE) across multiple folds:
 
-![Model Performance Summary](images/model_performance_summary.png)
+![Model Performance Summary](images/cross.png)
 
 
 # 7. Conclusion
