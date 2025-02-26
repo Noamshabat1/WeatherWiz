@@ -6,7 +6,7 @@
 ## Abstract
 This project presents Weather Wiz, an AI-powered system for forecasting temperature using 25 years of historical weather data provided by the Israel Meteorological Service (IMS). Employing a suite of machine learning models—from linear regressions with regularization to deep learning architectures such as LSTM and Graph Neural Networks (GNN)—the framework captures both temporal and spatial dependencies inherent in weather data. This document details the problem definition, data characteristics, preprocessing steps, model implementations, and experimental setup in a scientific paper format.
 
-The following are sample of Meteorological stations which the data we extracted from IMS:
+The following are samples of Meteorological stations which the data we extracted from IMS:
 
 ![Stations Map](images/station_map.png)  
 
@@ -22,12 +22,12 @@ The primary goal of this project is to predict temperature (denoted as **TG**) f
 ---
 
 # 2. Data Description
-This are the columns provided by IMS:
+These are the columns provided by IMS:
 
 ![Features explaination](images/features_explain.png)  
 
 
-### Target: predict Ground Temprature (TG):
+### Target: predict Ground Temperature (TG):
 
 ![TG distribution](images/TG_distribution.png)  
 
@@ -43,7 +43,7 @@ Data is sourced from the [Israel Meteorological Service (IMS)](https://ims.gov.i
 - **Features:**  
   - **Meteorological Variables:** Relative Humidity (RH), Wind Speed (WS), Wind Direction (WD), Rainfall (Rain), among others.  
   - **Engineered Features:**  
-    - **Time Features:** Hour, sine and cosine transformations of the hour to capture cyclic patterns.  
+    - **Time Features:** Hour, sine, and cosine transformations of the hour to capture cyclic patterns.  
     - **Wind Vectors:** Derived from wind speed and wind direction to represent the wind’s x and y components.
 - **Label:**  
   - **Temperature (TG):** The primary variable targeted for prediction.
