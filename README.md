@@ -202,3 +202,101 @@ The project repository includes further details on:
   
 ## **Acknowledgments**  
 This project is made possible with data from the [**Israel Meteorological Service (IMS)**](https://ims.gov.il).
+
+
+
+
+
+
+
+
+
+# Weather Wiz
+
+**Your AI-powered weather expert, trained on multi-station data to deliver precise and reliable forecasts.**
+
+*by Noam Shabat & Tomer Vagenfeld*
+
+---
+
+## Abstract
+Weather Wiz is an AI-powered system for forecasting temperature using 25 years of historical weather data from the Israel Meteorological Service (IMS). By combining a spectrum of machine learning techniques—from regularized linear regressions to advanced deep learning models such as LSTM and Graph Neural Networks (GNN)—Weather Wiz captures both temporal and spatial dependencies in weather data. This document outlines the problem definition, data characteristics, preprocessing methods, model implementations, and experimental setup in a scientific paper format.
+
+Below is a sample map of the meteorological stations from which the data was extracted:
+
+![Stations Map](station_map.png)
+
+---
+
+## 1. Introduction
+
+### Problem Definition
+The primary goal of Weather Wiz is to predict temperature (denoted as **TG**) using historical meteorological data. Weather conditions depend on various factors, including humidity, wind speed, and precipitation. Leveraging 25 years of multi-station data sampled every 10 minutes (and aggregated as needed), Weather Wiz provides accurate short-term forecasts to aid in decision-making.
+
+---
+
+## 2. Data Description
+
+### IMS Data Columns
+The IMS dataset includes a comprehensive set of meteorological measurements:
+
+![Features Explanation](features_explain.png)
+
+### Target Variable: Ground Temperature (TG)
+- **TG Distribution:**  
+  ![TG Distribution](TG_distribution.png)
+  
+- **Full Time Series Visualization:**  
+  ![TG Series Full](TG_series_full.png)
+  
+- **Detailed Time Series View:**  
+  ![TG Series](TG_series.png)
+
+---
+
+## 6. Training Pipeline and Results
+
+### Training Pipeline
+- **Time Series Cross-Validation:**  
+  A custom time series split ensures that data is partitioned chronologically for robust evaluation.
+- **Evaluation Metrics:**  
+  Models are assessed using Mean Absolute Error (MAE), Mean Squared Error (MSE), R² Score, and a modified Median Absolute Percentage Error (MdAPE).
+- **Visualization:**  
+  The pipeline generates plots comparing actual vs. predicted values, along with training loss curves for each model.
+
+### Examples of Results
+- **Temperature Predictions:**  
+  ![TG Predictions](TG_pred.png)  
+  ![TG Predictions 2](TG_pred_2.png)
+  
+- **Random Forest Results:**  
+  ![Random Forest](random_forest.png)
+
+- **LSTM Results:**  
+  ![LSTM](lstm.png)
+
+- **Graph Neural Network (GNN) Loss:**  
+  ![GNN Loss](loss.png)
+
+- **Performance Metrics:**  
+  - **MAE:**  
+    ![MAE](mae.png)
+  - **MSE:**  
+    ![MSE](mse.png)
+  - **R² Score:**  
+    ![R² Score](r2.png)
+
+- **Lasso Regression Results:**  
+  ![Lasso Regression](lasso.png)
+
+---
+
+## 7. Conclusion
+Weather Wiz showcases a robust methodology for temperature prediction by integrating classical statistical techniques with state-of-the-art deep learning models. The combination of temporal and spatial features—especially through the use of GNNs—enables the system to effectively model the complexities of weather dynamics and deliver reliable forecasts.
+
+---
+
+## Acknowledgments
+This project is made possible with data from the [Israel Meteorological Service (IMS)](https://ims.gov.il).
+
+
