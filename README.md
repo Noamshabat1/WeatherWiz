@@ -114,7 +114,25 @@ Regularization:
   - Hyperparameter optimization was conducted to improve the performance of the Random Forest model. Specific parameters, such as the number of trees, maximum depth, and minimum sample split, were fine-tuned to best capture the nonlinear relationships in the data.
 
 ### Graph Neural Network (GNN) Overview
+
 Graph Neural Networks (GNNs) operate on data structured as graphs, where nodes represent entities—in this case, weather stations—and edges represent spatial or temporal relationships. GNNs aggregate information from a node’s neighbors through graph convolutional layers, effectively capturing localized patterns. This is particularly beneficial for weather prediction, as meteorological conditions are often spatially correlated across geographically proximate stations.
+
+#### Enhanced GNN Features
+
+- **Architecture:**  
+  - Built with three graph convolutional layers (GCNConv), each followed by batch normalization and LeakyReLU activations for stability and faster convergence.
+  - Residual connections between layers facilitate better gradient flow, and dropout is applied to mitigate overfitting.
+  - A final fully connected layer maps the aggregated node features to the output prediction.
+
+- **Graph Data Construction:**  
+  - **Window Concept:**  
+    A sliding window approach is employed to create sequential (temporal) edges by connecting each node to a defined number of subsequent nodes, effectively capturing short-term temporal dependencies.
+  - **Unique Edge Option:**  
+    Optionally, station-specific geographical attributes (such as latitude and longitude) can be used to generate a unique edge. This enhances the graph structure by explicitly modeling spatial relationships among weather stations.
+
+- **Training and Optimization:**  
+  The GNN model is trained using the AdamW optimizer with weight decay, which improves generalization by preventing overfitting. Training and validation loss curves are monitored throughout the process to ensure robust performance.
+
 
 ---
 
