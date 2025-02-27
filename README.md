@@ -115,7 +115,7 @@ Graph Neural Networks (GNNs) operate on data structured as graphs, where nodes r
 
 ### Key Code Excerpts
 
-#### Long Short-Term Memory Network (LSTM) Model:
+### Long Short-Term Memory Network (LSTM) Model
 The LSTM model is structured to capture the sequential nature of weather data:
 ```python
 class WeatherForecastLSTM(nn.Module):
