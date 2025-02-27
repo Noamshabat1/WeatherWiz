@@ -96,7 +96,7 @@ Weather Wiz implements a suite of models to capture diverse aspects of the data:
   - **Graph Neural Network (GNN):**  
     Leverages graph structures to model spatial relationships among weather stations, improving forecasting accuracy by integrating both temporal and spatial contexts.
 
-<hr style="border: 0; border-top: 1px solid #ccc;">
+<hr style="border: none; border-top: 0.5px solid #ccc; margin: 1em 0;">
 
 ### Loss Function and Optimization
 
@@ -130,7 +130,7 @@ Weather Wiz implements a suite of models to capture diverse aspects of the data:
   - **Random Forest:**  
     Hyperparameter optimization was conducted on parameters such as the number of trees, maximum depth, and minimum sample split to best capture the nonlinear relationships in the data.
 
-<hr style="border: 0; border-top: 1px solid #ccc;">
+<hr style="border: none; border-top: 0.5px solid #ccc; margin: 1em 0;">
 
 ### Graph Neural Network (GNN) Overview
 
