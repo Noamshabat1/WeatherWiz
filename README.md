@@ -75,29 +75,46 @@ Data is sourced from the [Israel Meteorological Service (IMS)](https://ims.gov.i
 # 4. Methodology
 
 ### Model Architectures
-Weather Wiz implements a variety of models to capture different aspects of the data:
+
+Weather Wiz implements a suite of models to capture diverse aspects of the data:
 
 - **Linear Models:**  
-  - **Linear Regression:** Uses ordinary least squares to estimate the model parameters by minimizing the sum of squared errors.
-  - **Ridge Regression:** Uses L2 regularization to shrink coefficients, helping to reduce overfitting by penalizing large weights.
-  - **Lasso Regression:** Uses L1 regularization to enforce sparsity in the model coefficients, effectively performing feature selection.
+  - **Linear Regression:**  
+    Uses ordinary least squares to estimate model parameters by minimizing the sum of squared errors.  
+  - **Ridge Regression:**  
+    Incorporates L2 regularization to shrink coefficients, reducing overfitting by penalizing large weights.  
+  - **Lasso Regression:**  
+    Applies L1 regularization to enforce sparsity in the coefficients, effectively performing feature selection.
+
 - **Tree-Based Model:**  
-  - **Random Forest:** Builds an ensemble of decision trees to capture nonlinear interactions among features. Its performance is enhanced through targeted hyperparameter tuning.
+  - **Random Forest:**  
+    Builds an ensemble of decision trees to capture nonlinear interactions among features. Its performance is further enhanced through targeted hyperparameter tuning.
+
 - **Deep Learning Models:**  
-  - **Long Short-Term Memory (LSTM):** A recurrent neural network designed to capture long-term temporal dependencies in sequential data.
-  - **Graph Neural Network (GNN):** Utilizes graph structures to model spatial relationships among weather stations.
+  - **Long Short-Term Memory (LSTM):**  
+    A recurrent neural network designed to capture long-term temporal dependencies in sequential data.  
+  - **Graph Neural Network (GNN):**  
+    Leverages graph structures to model spatial relationships among weather stations, improving forecasting accuracy by integrating both temporal and spatial contexts.
+
+---
 
 ### Loss Function and Optimization
-- **Loss Function:**
-  - Deep learning models (LSTM and GNN) utilize the Mean Squared Error (MSE) loss for training.
-Optimization Algorithms:
-Regularization:
+
+- **Loss Function:**  
+  Deep learning models (LSTM and GNN) utilize the Mean Squared Error (MSE) loss for training.
+
 - **Optimization Algorithms:**  
-  - **LSTM:** Trained using the Adam optimizer.  
-  - **GNN:** Trained using AdamW with weight decay.
-- **Regularization:**  
-  - Ridge Regression: Uses L2 regularization.
-  - Lasso Regression: Uses L1 regularization.
+  - **LSTM:**  
+    Trained using the Adam optimizer.
+  - **GNN:**  
+    Trained using the AdamW optimizer with weight decay for enhanced generalization.
+
+- **Regularization Techniques:**  
+  - **Ridge Regression:**  
+    Uses L2 regularization.
+  - **Lasso Regression:**  
+    Uses L1 regularization.
+
 - **Hyperparameter Tuning:**  
   - **LSTM:**  
     - Hidden units: 32 to 128  
@@ -110,29 +127,30 @@ Regularization:
     - Dropout: 0.0 to 0.5  
     - Learning rate: 0.001 to 0.01  
     - Epochs: 30 to 100
-  - **Random Forest Hyperparameters:**
-  - Hyperparameter optimization was conducted to improve the performance of the Random Forest model. Specific parameters, such as the number of trees, maximum depth, and minimum sample split, were fine-tuned to best capture the nonlinear relationships in the data.
+  - **Random Forest:**  
+    Hyperparameter optimization was conducted on parameters such as the number of trees, maximum depth, and minimum sample split to best capture the nonlinear relationships in the data.
 
+---
 
 ### Graph Neural Network (GNN) Overview
 
-Graph Neural Networks (GNNs) operate on data structured as graphs, where nodes represent weather stations and edges capture spatial or temporal relationships. By aggregating information from neighboring nodes through graph convolutional layers, GNNs effectively model localized patterns—essential for predicting weather, which is often influenced by nearby conditions.
+Graph Neural Networks (GNNs) model data as graphs where nodes represent weather stations and edges capture spatial or temporal relationships. By aggregating information from neighboring nodes through graph convolutional layers, GNNs effectively learn localized patterns—essential for accurate weather prediction when nearby conditions play a significant role.
 
 #### Enhanced GNN Features
 
 - **Architecture:**  
-  - Built with three graph convolutional layers (GCNConv), each followed by batch normalization and LeakyReLU activations to ensure stability and rapid convergence.
-  - Residual connections between layers improve gradient flow, while dropout helps reduce overfitting.
-  - A final fully connected layer transforms the aggregated node features into the final prediction.
+  - Constructed with three graph convolutional layers (GCNConv), each followed by batch normalization and LeakyReLU activations for stability and rapid convergence.
+  - Residual connections between layers improve gradient flow, and dropout is applied to mitigate overfitting.
+  - A final fully connected layer converts the aggregated node features into the final prediction.
 
 - **Graph Data Construction:**  
   - **Sliding Window Concept:**  
-    A sliding window approach is used to create sequential (temporal) edges by connecting each node to a set number of subsequent nodes. This captures fine-grained temporal dynamics, providing a rich context for how weather conditions evolve. The window size is adjustable, allowing the model to adapt to different forecasting horizons (e.g., hourly vs. daily).
+    A sliding window approach is used to create sequential (temporal) edges by connecting each node to a set number of subsequent nodes. This design captures fine-grained temporal dynamics, providing rich context on how weather conditions evolve. The adjustable window size allows the model to adapt seamlessly to various forecasting horizons (e.g., hourly vs. daily).
   - **Unique Edge Option:**  
     Additionally, the model leverages station-specific geographical coordinates (latitude and longitude) to generate unique edges, enriching the graph by explicitly modeling spatial relationships among weather stations.
 
 - **Training and Optimization:**  
-  The GNN is trained using the AdamW optimizer with weight decay, which enhances generalization by preventing overfitting. Training and validation loss curves are monitored to ensure robust performance.
+  The GNN is trained using the AdamW optimizer with weight decay, enhancing generalization and preventing overfitting. Training and validation loss curves are continuously monitored to ensure robust performance.
 
 
 ---
