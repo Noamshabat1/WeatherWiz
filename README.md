@@ -329,6 +329,14 @@ source env/bin/activate  # On Windows: env\Scripts\ctivate
 pip install -r requirements.txt
 ```
 
+### Data Path Configuration
+
+**Important:** Before running the main script, update the data file path in `main.py` to match the location where you have saved your dataset. For example, you will see a line like:
+
+```python
+df = pd.read_csv('/content/drive/MyDrive/Course70938/earthML/finalProject/Data/IMS/FullData.csv')
+```
+
 ### Run the Main Script
 
 Launch the training pipeline:
