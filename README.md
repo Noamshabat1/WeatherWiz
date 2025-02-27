@@ -122,6 +122,7 @@ Weather Wiz implements a suite of models to capture diverse aspects of the data:
     - Dropout rate: 0.0 to 0.3  
     - Learning rate: 0.001 to 0.01  
     - Epochs: 5 to 10
+      
   - **GNN:**  
     - Hidden dimension: 32 to 256  
     - Dropout: 0.0 to 0.5  
