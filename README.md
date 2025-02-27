@@ -78,21 +78,26 @@ Data is sourced from the [Israel Meteorological Service (IMS)](https://ims.gov.i
 Weather Wiz implements a variety of models to capture different aspects of the data:
 
 - **Linear Models:**  
-  - **Lasso Regression:** Uses L1 regularization to enforce sparsity in the model coefficients.
+  - **Linear Regression:** Uses ordinary least squares to estimate the model parameters by minimizing the sum of squared errors.
+  - **Ridge Regression:** Uses L2 regularization to shrink coefficients, helping to reduce overfitting by penalizing large weights.
+  - **Lasso Regression:** Uses L1 regularization to enforce sparsity in the model coefficients, effectively performing feature selection.
 - **Tree-Based Model:**  
-  - **Random Forest:** An ensemble method that captures nonlinear interactions among features.
+  - **Random Forest:** Builds an ensemble of decision trees to capture nonlinear interactions among features. Its performance is enhanced through targeted hyperparameter tuning.
 - **Deep Learning Models:**  
   - **Long Short-Term Memory (LSTM):** A recurrent neural network designed to capture long-term temporal dependencies in sequential data.
   - **Graph Neural Network (GNN):** Utilizes graph structures to model spatial relationships among weather stations.
 
 ### Loss Function and Optimization
-- **Loss Function:**  
-  - The Mean Squared Error (MSE) loss is used for deep learning models.
+- **Loss Function:**
+  - Deep learning models (LSTM and GNN) utilize the Mean Squared Error (MSE) loss for training.
+Optimization Algorithms:
+Regularization:
 - **Optimization Algorithms:**  
   - **LSTM:** Trained using the Adam optimizer.  
   - **GNN:** Trained using AdamW with weight decay.
 - **Regularization:**  
-  - Incorporated in linear models via L1 (Lasso) penalties.
+  - Ridge Regression: Uses L2 regularization.
+  - Lasso Regression: Uses L1 regularization.
 - **Hyperparameter Tuning:**  
   - **LSTM:**  
     - Hidden units: 32 to 128  
@@ -106,7 +111,7 @@ Weather Wiz implements a variety of models to capture different aspects of the d
     - Learning rate: 0.001 to 0.01  
     - Epochs: 30 to 100
   - **Random Forest Hyperparameters:**
-  - Parameter Tuning: Hyperparameter optimization was conducted to improve the performance of the Random Forest model. Specific parameters, such as the number of trees, maximum depth, and minimum samples split, were fine-tuned to best capture the nonlinear relationships in the data.
+  - Hyperparameter optimization was conducted to improve the performance of the Random Forest model. Specific parameters, such as the number of trees, maximum depth, and minimum sample split, were fine-tuned to best capture the nonlinear relationships in the data.
 
 ### Graph Neural Network (GNN) Overview
 Graph Neural Networks (GNNs) operate on data structured as graphs, where nodes represent entities—in this case, weather stations—and edges represent spatial or temporal relationships. GNNs aggregate information from a node’s neighbors through graph convolutional layers, effectively capturing localized patterns. This is particularly beneficial for weather prediction, as meteorological conditions are often spatially correlated across geographically proximate stations.
