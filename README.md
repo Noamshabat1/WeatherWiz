@@ -119,20 +119,31 @@ Graph Neural Networks (GNNs) operate on data structured as graphs, where nodes r
 The LSTM model is structured to capture the sequential nature of weather data:
 ```python
 class WeatherForecastLSTM(nn.Module):
-    def __init__(self, input_dim, hidden_units=128, lstm_layers=2, dropout_rate=0.3):
+    def __init__(self, input_dim, hidden_units=32, lstm_layers=2, dropout_rate=0.0):
+        """
+        A simplified LSTM model with at least 2 layers.
+
+        Parameters:
+            input_dim (int): Number of input features.
+            hidden_units (int): Number of hidden units.
+            lstm_layers (int): Number of LSTM layers (default is 2).
+            dropout_rate (float): Dropout rate (applied if lstm_layers > 1).
+        """
         super(WeatherForecastLSTM, self).__init__()
         self.lstm = nn.LSTM(
             input_size=input_dim,
             hidden_size=hidden_units,
             num_layers=lstm_layers,
             dropout=dropout_rate if lstm_layers > 1 else 0,
-            batch_first=True
+            batch_first=True,
+            bidirectional=False  # Single-direction for speed.
         )
         self.fc = nn.Linear(hidden_units, 1)
 
     def forward(self, x):
         lstm_out, _ = self.lstm(x)
-        return self.fc(lstm_out[:, -1, :])
+        final_output = self.fc(lstm_out[:, -1, :])
+        return final_output
 ```
 
 ### Graph Neural Network (GNN) Model
@@ -141,7 +152,11 @@ The GNN model is implemented to leverage spatial relationships:
 
 ```python
 class GraphNeuralNetwork(nn.Module):
-    def __init__(self, num_features, hidden_dim=256, dropout=0.4, negative_slope=0.01):
+    def __init__(self, num_features, hidden_dim=128, dropout=0.3, negative_slope=0.01):
+        """
+        A robust GNN model that uses three GCNConv layers with residual connections.
+        Batch normalization and LeakyReLU activations are applied for improved stability.
+        """
         super(GraphNeuralNetwork, self).__init__()
         self.conv1 = GCNConv(num_features, hidden_dim)
         self.bn1 = nn.BatchNorm1d(hidden_dim)
@@ -151,15 +166,33 @@ class GraphNeuralNetwork(nn.Module):
         self.bn3 = nn.BatchNorm1d(hidden_dim)
         self.fc = nn.Linear(hidden_dim, 1)
         self.dropout = nn.Dropout(dropout)
+        self.negative_slope = negative_slope
 
     def forward(self, x, edge_index):
-        x1 = F.leaky_relu(self.bn1(self.conv1(x, edge_index)), negative_slope=0.01)
+        # First layer
+        x1 = self.conv1(x, edge_index)
+        x1 = self.bn1(x1)
+        x1 = F.leaky_relu(x1, negative_slope=self.negative_slope)
         x1 = self.dropout(x1)
-        x2 = F.leaky_relu(self.bn2(self.conv2(x1, edge_index)), negative_slope=0.01)
-        x2 = self.dropout(x2) + x1  # Residual connection
-        x3 = F.leaky_relu(self.bn3(self.conv3(x2, edge_index)), negative_slope=0.01)
-        x3 = self.dropout(x3) + x2  # Residual connection
-        return self.fc(x3).squeeze()
+
+        # Second layer
+        x2 = self.conv2(x1, edge_index)
+        x2 = self.bn2(x2)
+        x2 = F.leaky_relu(x2, negative_slope=self.negative_slope)
+        x2 = self.dropout(x2)
+        # Residual connection: add the output of the first layer to the second layer
+        x2 = x2 + x1
+
+        # Third layer
+        x3 = self.conv3(x2, edge_index)
+        x3 = self.bn3(x3)
+        x3 = F.leaky_relu(x3, negative_slope=self.negative_slope)
+        x3 = self.dropout(x3)
+        # Residual connection: add the result from the previous block
+        x3 = x3 + x2
+
+        out = self.fc(x3)
+        return out.squeeze()
 ```
 
 ---
