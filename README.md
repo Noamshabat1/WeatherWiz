@@ -219,8 +219,15 @@ The pipeline includes plots comparing actual vs. predicted values as well as tra
 ![TG predictions](images/TG_pred.png)  
 ![TG predictions 2](images/TG_pred_2.png)  
 
+#### Linear Regression:		
+![Linear Regression](images/linear_regression.png)
+
+#### Ridge Regression:		
+![Ridge Regression](images/ridge.png)
+
 #### Lasso Regression:		
-![Lasso Regression](images/lasso.png) 
+![Lasso Regression](images/lasso.png)
+
 #### Random Forest:			
 
 ![Random Forest](images/random_forest.png) 
