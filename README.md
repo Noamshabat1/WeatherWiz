@@ -105,6 +105,8 @@ Weather Wiz implements a variety of models to capture different aspects of the d
     - Dropout: 0.0 to 0.5  
     - Learning rate: 0.001 to 0.01  
     - Epochs: 30 to 100
+  - **Random Forest Hyperparameters:**
+  - Parameter Tuning: Hyperparameter optimization was conducted to improve the performance of the Random Forest model. Specific parameters, such as the number of trees, maximum depth, and minimum samples split, were fine-tuned to best capture the nonlinear relationships in the data.
 
 ### Graph Neural Network (GNN) Overview
 Graph Neural Networks (GNNs) operate on data structured as graphs, where nodes represent entities—in this case, weather stations—and edges represent spatial or temporal relationships. GNNs aggregate information from a node’s neighbors through graph convolutional layers, effectively capturing localized patterns. This is particularly beneficial for weather prediction, as meteorological conditions are often spatially correlated across geographically proximate stations.
