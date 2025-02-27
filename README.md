@@ -78,9 +78,7 @@ Data is sourced from the [Israel Meteorological Service (IMS)](https://ims.gov.i
 
 Weather Wiz implements a suite of models to capture diverse aspects of the data:
 
-- **Linear Models:**  
-  - **Linear Regression:**  
-    Uses ordinary least squares to estimate model parameters by minimizing the sum of squared errors.  
+- **Linear Models:**   
   - **Ridge Regression:**  
     Incorporates L2 regularization to shrink coefficients, reducing overfitting by penalizing large weights.  
   - **Lasso Regression:**  
@@ -256,9 +254,6 @@ The pipeline includes plots comparing actual vs. predicted values as well as tra
 
 ![TG predictions](images/TG_pred.png)  
 ![TG predictions 2](images/TG_pred_2.png)  
-
-#### Linear Regression:		
-![Linear Regression](images/linear_regression.png)
 
 #### Ridge Regression:		
 ![Ridge Regression](images/ridge.png)
